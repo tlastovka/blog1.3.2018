@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CrateCategoriesTable extends Migration
+class CreateArticlesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,12 @@ class CrateCategoriesTable extends Migration
      */
     public function up()
     {
-        Schema::create('categories', function ($table){
+        Schema::create('articles', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name');
-            $table->timestamps();
+
+            $table->text('title');
+            $table->text('text');
+            $table->unsignedBigInteger('user_id');
         });
     }
 
@@ -27,6 +29,6 @@ class CrateCategoriesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('categories');
+        Schema::dropIfExists('articles');
     }
 }
