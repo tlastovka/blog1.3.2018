@@ -20,3 +20,4 @@ Auth::routes();
 Route::get('/home', 'CategoryController@index')->name('home');
 
 Route::get('/form', 'CategoryController@create');
+Route::post('/form', 'CategoryController@store');

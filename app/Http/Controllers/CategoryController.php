@@ -13,18 +13,29 @@ class CategoryController extends Controller
     //return 'list of all categories'
     $categories = Category::all();
     return view('categories.index', ['categories' => $categories]);
-
-
     //
     //
     }
-    public function create()
 
+    public function create()
     {
         return view('categories.form');
     }
 
 
+    public function store(Request $request)
+    {
+    $newRow = new Category();
+    $newRow->name = $request->get('text1');
+
+    $newRow->save();
+
+    return redirect(action('CategoryController@index'));
+
+    }
 
 
-}
+
+
+};
+
